@@ -1,0 +1,102 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html{
+    background-color: wheat;
+}
+
+.nav a {
+    display: inline-block;
+    padding: .5em 5%;
+    color:black;
+    text-decoration: none;
+}
+
+.nav a:hover {
+    background-color:rgba(255, 255, 255, 0.3);
+}
+
+a {
+    color: black;
+}
+.main-nav{
+    text-align: center;
+    font-size: 1.1em;
+    border-bottom: 1px solid gray;
+}
+
+h1 {
+    text-align: center;
+    padding: 10px;
+    font-size: 40px;
+}
+
+h2 {
+    padding: 20px 0px;
+    font-size: 30px;
+    text-align: justify;
+}
+
+footer{
+    padding: 0px 200px;
+    border-top: 1px solid gray;
+}
+
+section{
+    padding: 0px 200px 30px;
+    margin: 30px 0px
+}
+
+p, li{
+    font-size: larger;
+    text-align: justify;
+}
+
+p, ul{
+    padding-bottom: 20px;
+}
+
+img.me {
+    max-width: 230px;
+    height: auto;
+    border-radius: 50%;
+    float: right;
+    background-color: gray;
+    margin: 13px;
+}
+
+img.blogpic{
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.blogflex{
+    display: flex;
+    flex-direction: row;
+    margin: 50px 0px;
+}
+
+.blogpicflex{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.blogtextflex{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.blogtextflex h2{
+    padding: 0px 0px 10px;
+}
+
+.blogdescription{
+    flex-grow: 3;
+    border-bottom: 1px solid gray;
+}
