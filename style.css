@@ -24,6 +24,7 @@ a {
 .main-nav{
     text-align: center;
     font-size: 1.1em;
+    /* font-size: 1.5vw; */
     border-bottom: 1px solid gray;
 }
 
@@ -31,11 +32,13 @@ h1 {
     text-align: center;
     padding: 10px;
     font-size: 40px;
+    /* font-size: 4vw; */
 }
 
 h2 {
     padding: 20px 0px;
     font-size: 30px;
+    /* font-size: 3vw; */
     text-align: justify;
 }
 
@@ -52,6 +55,7 @@ section{
 
 p, li{
     font-size: larger;
+    /* font-size: 1.5vw; */
     text-align: justify;
 }
 
@@ -60,6 +64,7 @@ p, ul{
 }
 
 img.me {
+    width: 100%;
     max-width: 230px;
     height: auto;
     border-radius: 50%;
@@ -75,29 +80,36 @@ img.blogpic{
     border-radius: 8px;
 }
 
-.blogflex{
-    display: flex;
-    flex-direction: row;
-    margin: 50px 0px;
+.blogbox{
+    margin: 50px auto;
+    max-width: 750px;
+    width: 100%;
+    height: auto;
 }
 
-.blogpicflex{
-    display: flex;
-    flex-direction: column;
+.blogpicbox{
     margin: 10px;
+    float: left;
+    width: 45%;
+    height: auto;
 }
 
-.blogtextflex{
-    display: flex;
-    flex-direction: column;
+.blogtextbox{
     margin: 10px;
+    float: left;
+    width: 45%;
+    height: auto;
 }
 
-.blogtextflex h2{
+.blogtextbox h2{
     padding: 0px 0px 10px;
 }
 
 .blogdescription{
-    flex-grow: 3;
     border-bottom: 1px solid gray;
+
+}
+
+#clear{
+    clear: both;
 }
