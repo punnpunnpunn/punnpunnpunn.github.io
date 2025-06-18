@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@layer base {
+    html{
+        background-color: wheat;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    nav a {
+        display: inline-block;
+        padding: .5em 5%;
+    }
+
+    nav a:hover {
+        background-color:rgba(255, 255, 255, 0.3);
+    }
+
+    nav{
+        text-align: center;
+        font-size: 1.1em;
+        border-bottom: 1px solid gray;
+    }
+
+    h1 {
+        text-align: center;
+        padding: 10px;
+        font-size: 40px;
+        font-weight: bold;
+    }
+
+    h2 {
+        padding: 20px 0px;
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    footer{
+        border-top: 1px solid gray;
+    }
+
+    section{
+        max-width: 850px;
+        padding: 0px 10px;
+        margin: 30px auto;
+    }
+
+    p, li{
+        font-size: larger;
+    }
+
+    p, ul{
+        padding-bottom: 20px;
+        list-style-type: disc;
+        list-style-position: inside;
+    }
+
+    ul{
+        padding-left: 40px;
+    }
+
+    img.me {
+        width: 100%;
+        max-width: 230px;
+        height: auto;
+        border-radius: 50%;
+        float: right;
+        background-color: gray;
+        margin: 13px;
+    }
+}
