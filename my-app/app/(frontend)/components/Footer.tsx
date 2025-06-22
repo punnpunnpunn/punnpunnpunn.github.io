@@ -9,7 +9,7 @@ const Footer = () => {
                 <li>Discord: punnpunnpunn</li>
                 <li>LineID: 15punpun</li>
             </ul>
-            <p><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Click this link (trust me bro)</a></p>
+            <p><a className="underline" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Click this link (trust me bro)</a></p>
         </section>
     </footer>
   )
