@@ -49,6 +49,13 @@
         },
         "optional": true
       },
+      "description": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
       "author": {
         "type": "objectAttribute",
         "value": {

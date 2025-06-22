@@ -1,5 +1,5 @@
 {
-  "path": "./sanity/**/*.{ts,tsx}",
+  "path": "./{app,sanity}/**/*.{ts,tsx}",
   "schema": "./sanity/extract.json",
   "generates": "./sanity/types.ts"
 }
