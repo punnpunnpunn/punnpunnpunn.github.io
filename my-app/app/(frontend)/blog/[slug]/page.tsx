@@ -35,11 +35,11 @@ export default async function Page({
 
       {post?.mainImage ? (
         <Image
-          src={urlFor(post.mainImage).width(800).height(300).auto("format").url()}
+          src={urlFor(post.mainImage).width(2000).auto("format").url()}
           alt={post?.mainImage?.alt || ""}
-          width="800"
-          height="300"
-          className="my-5"
+          width="2000"
+          height="1000"
+          className="my-5 max-w-[750px]"
         />
       ) : null}
       {post?.body ? (

@@ -46,6 +46,7 @@
 
     p, li{
         font-size: larger;
+        text-align: justify;
     }
 
     p, ul{
