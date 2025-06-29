@@ -1,25 +1,36 @@
 @import "tailwindcss";
 
+@theme {
+    --color-background: #0F172A; /*Page background, navbars*/
+    --color-primary: #6366F1; /*Cards, sections, containers*/
+    --color-surface: #1E293B; /*Buttons, links, hover highlights*/
+    --color-accent: #FB923C; /*Highlights, icons, emphasis*/
+    --color-text-primary: #F1F5F9; /*Main text color*/
+    --color-text-muted: #94A3B8; /*Secondary text, subtext*/
+    --color-border: #334155; /*Dividers, card outlines*/
+    --color-wheat: #f5deb3;
+}
+
 @layer base {
     html{
         background-color: wheat;
-        font-family: 'Times New Roman', Times, serif;
+        font-family: 'Inter', sans-serif;
     }
 
-    nav a {
+    /*nav a {
         display: inline-block;
         padding: .5em 5%;
-    }
+    }*/
 
     nav a:hover {
-        background-color:rgba(255, 255, 255, 0.3);
+        color: var(--color-primary);
     }
 
-    nav{
+    /*nav{
         text-align: center;
         font-size: 1.1em;
         border-bottom: 1px solid gray;
-    }
+    }*/
 
     h1 {
         text-align: center;
@@ -40,8 +51,8 @@
 
     section{
         max-width: 850px;
-        padding: 0px 10px;
-        margin: 30px auto;
+        padding: 30px 10px;
+        margin: 0px auto;
     }
 
     p, li{

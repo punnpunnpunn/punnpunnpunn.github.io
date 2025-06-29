@@ -21,7 +21,7 @@ export default async function Blog() {
         {posts.map((post) => (
           <div className="max-w-xs w-full sm:max-w-2xl sm:flex m-auto my-[50px] h-auto shadow-lg sm:shadow-none rounded-lg" key={post._id}>
             {post?.mainImage ? (
-              <div className="sm:float-left sm:w-[45%] m-2.5">
+              <div className="sm:float-left sm:w-[45%] m-2.5 float-none">
               <Image
                 src={urlFor(post.mainImage).width(2000).auto("format").url()}
                 alt={post?.mainImage?.alt || ""}
@@ -31,8 +31,8 @@ export default async function Blog() {
               />
               </div>
             ) : null}
-            <div className="m-2.5 sm:float-left sm:w-[45%] h-auto">
-              <Link className="text-gray-900 font-bold text-3xl mb-3 underline" href={`/blog/${post?.slug?.current}`}>{post?.title}</Link>
+            <div className="m-2.5 sm:float-left sm:w-[45%] h-auto float-none">
+              <Link className="font-bold text-3xl mb-3 underline" href={`/blog/${post?.slug?.current}`}>{post?.title}</Link>
               <p className="text-lg text-justify mb-1">{post?.description}</p>
               <p className="text-sm border-t">{convertDate(post?.publishedAt)}</p>
             </div>

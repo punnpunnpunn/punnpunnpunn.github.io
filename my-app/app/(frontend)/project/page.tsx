@@ -24,7 +24,7 @@ export default async function Home() {
               </div>
             ) : null}
             <div className="m-2.5 sm:float-left sm:w-[45%] h-auto">
-              <Link className="text-gray-900 font-bold text-3xl mb-3 underline" href={String(project?.link)}>{project?.title}</Link>
+              <Link className="font-bold text-3xl mb-3 underline" href={String(project?.link)}>{project?.title}</Link>
               <p className="text-lg text-justify my-1 sm:border-b">{project?.description}</p>
             </div>
           </div>
