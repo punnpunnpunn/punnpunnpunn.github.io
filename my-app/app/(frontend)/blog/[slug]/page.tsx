@@ -39,7 +39,7 @@ export default async function Page({
           alt={post?.mainImage?.alt || ""}
           width="2000"
           height="1000"
-          className="my-5 max-w-[750px]"
+          className="my-5 max-w-[750px] w-full"
         />
       ) : null}
       {post?.body ? (
