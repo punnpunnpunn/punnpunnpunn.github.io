@@ -13,6 +13,27 @@
  */
 
 // Source: schema.json
+export type Funfact = {
+  _id: string;
+  _type: "funfact";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  fact?: string;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+};
+
 export type Project = {
   _id: string;
   _type: "project";
@@ -307,7 +328,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = Project | Post | Author | Category | BlockContent | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = Funfact | Project | Post | Author | Category | BlockContent | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -414,6 +435,23 @@ export type PROJECTS_QUERYResult = Array<{
     _type: "image";
   };
 }>;
+// Variable: FUNFACT_QUERY
+// Query: *[_type == "funfact"] {fact, image}
+export type FUNFACT_QUERYResult = Array<{
+  fact: string | null;
+  image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
@@ -422,5 +460,6 @@ declare module "@sanity/client" {
     "*[_type == \"post\"] | order(publishedAt desc){\n  title,\n  mainImage,\n  \"authorName\": author->name,\n  slug,\n  _id,\n  description,\n  publishedAt\n}": POSTS_QUERYResult;
     "*[_type == \"post\" && slug.current == $slug][0]{\n  title, body, mainImage, author, publishedAt\n}": POST_QUERYResult;
     "*[_type == \"project\"] | order(_createdAt desc)": PROJECTS_QUERYResult;
+    "*[_type == \"funfact\"] {fact, image}": FUNFACT_QUERYResult;
   }
 }
