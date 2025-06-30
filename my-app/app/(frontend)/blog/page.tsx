@@ -19,19 +19,21 @@ export default async function Blog() {
     <section>
         <h1>My Blog Posts</h1>
         {posts.map((post) => (
-          <div className="max-w-xs w-full sm:max-w-2xl sm:flex m-auto my-[50px] shadow-lg sm:shadow-none rounded-lg" key={post._id}>
+          <div className="max-w-xs w-full sm:max-w-2xl sm:flex m-auto my-[50px] h-auto shadow-lg sm:shadow-none rounded-lg" key={post._id}>
             {post?.mainImage ? (
+              <div className="sm:float-left sm:w-[45%] m-2.5 float-none">
               <Image
-                src={urlFor(post.mainImage).width(800).height(400).auto("format").url()}
+                src={urlFor(post.mainImage).width(2000).auto("format").url()}
                 alt={post?.mainImage?.alt || ""}
-                width={800}
-                height={400}
-                className="w-sm rounded-xl"
+                width={2000}
+                height={1000}
+                className="w-full max-w-lg h-auto rounded-xl"
               />
+              </div>
             ) : null}
-            <div className="p-4 flex flex-col">
-              <Link className="text-gray-900 font-bold text-2xl mb-3 underline" href={`/blog/${post?.slug?.current}`}>{post?.title}</Link>
-              <p className="text-base text-justify mb-1">{post?.description}</p>
+            <div className="m-2.5 sm:float-left sm:w-[45%] h-auto float-none">
+              <Link className="font-bold text-3xl mb-3 underline" href={`/blog/${post?.slug?.current}`}>{post?.title}</Link>
+              <p className="text-lg text-justify mb-1">{post?.description}</p>
               <p className="text-sm border-t">{convertDate(post?.publishedAt)}</p>
             </div>
           </div>
