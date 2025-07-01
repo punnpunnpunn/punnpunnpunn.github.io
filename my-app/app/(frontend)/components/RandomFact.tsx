@@ -8,6 +8,7 @@ import { useState } from "react"
 const RandomFact = ({factList}: {factList: FUNFACT_QUERYResult}) => {
     const [randomFact, setRandomFact] = useState(-1)
     function randomizeFact() {
+        setRandomFact(-2)
         setRandomFact(Math.floor(Math.random()*factList.length))
     }
 
