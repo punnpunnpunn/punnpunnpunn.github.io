@@ -19,6 +19,7 @@ export default function Home() {
               <li>Make a program that detects reoccurring opening traps based on your online chess games</li>
               <li>Make a playable trading card game</li>
               <li>Make some sort of code breaking puzzle game</li>
+              <li>Make a gallery section on this website by pulling some images from my instagram account</li>
               <li>Sell meme shirts and other merchandise based on memes</li>
               <li>Write a song</li>
           </ul>

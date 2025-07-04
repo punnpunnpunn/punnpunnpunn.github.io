@@ -4,8 +4,10 @@ const Footer = () => {
         <section>
             <h2>Contact me:</h2>
             <ul>
-                <li>Email: punpunp@hotmail.com</li>
-                <li>Instagram: @punpun_thetrainer</li>
+                <li>Email: <a href="mailto:punpunp@hotmail.com">punpunp@hotmail.com</a></li>
+                <li>LinkedIn: <a href="https://www.linkedin.com/in/punnawit/">Punnawit Payapvattanavong</a></li>
+                <li>Github: <a href="https://github.com/punnpunnpunn">punnpunnpunn</a></li>
+                <li>Instagram: <a href="https://www.instagram.com/punpun_thetrainer/">@punpun_thetrainer </a></li>
                 <li>Discord: punnpunnpunn</li>
                 <li>LineID: 15punpun</li>
             </ul>

@@ -5,9 +5,9 @@ const Navbar = () => {
     <header className="flex justify-between items-center p-4 border-b">
       <div className="text-2xl font-bold">🗿 Punx2</div>
       <nav className="space-x-6">
-          <Link href="/">HOME</Link>
-          <Link href="/blog">BLOG</Link>
-          <Link href="/project">PROJECTS</Link>
+          <Link className="no-underline" href="/">HOME</Link>
+          <Link className="no-underline" href="/blog">BLOG</Link>
+          <Link className="no-underline" href="/project">PROJECTS</Link>
       </nav>
     </header>
   )
