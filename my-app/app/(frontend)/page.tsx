@@ -8,7 +8,8 @@ export default function Home() {
           <h1>Punpun's Personal Website</h1>
           <h2>Welcome to my personal website</h2>
           <p>
-              This is where I will write and post random things like blog posts and personal projects
+              This is where I will write and post random things like blog posts and personal projects.
+              I'll try to write at least one blog per week.
               The website might look a little weird on mobile. It works a lot better on a computer.
               Here are a few projects I want to do on my bucket list:
           </p>
