@@ -41,7 +41,9 @@ export default async function Hero() {
     }
   };
   for (const hero of Object.values(heroes)) {
+    if (Array.isArray(json.heroes)) {
       hero.level = json.heroes.find((h: Hero) => h.name === hero.name)?.level || 0;
+    }
   }
   return (
     <>
