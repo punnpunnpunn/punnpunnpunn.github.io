@@ -1,6 +1,7 @@
 import Image from "next/image";
 import my_pic from "../../public/my_pic.png"
 import FunFact from "./components/FunFact";
+import Hero from "./components/Hero";
 
 export default function Home() {
   return (
@@ -35,6 +36,7 @@ export default function Home() {
               and to add my cool projects all into one place.
           </p>
           <FunFact/>
+          <Hero/>
       </section>
   );
 }
