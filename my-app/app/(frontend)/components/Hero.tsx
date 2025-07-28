@@ -44,6 +44,9 @@ export default async function Hero() {
     if (Array.isArray(json.heroes)) {
       hero.level = json.heroes.find((h: Hero) => h.name === hero.name)?.level || 0;
     }
+    if (!hero.level) {
+      hero.level = 0; // Default level if not found
+    }
   }
   return (
     <>
