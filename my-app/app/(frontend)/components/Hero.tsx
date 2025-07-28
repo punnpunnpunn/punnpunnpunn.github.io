@@ -5,25 +5,15 @@ import MinionPrince from '@/public/Minion_Prince.webp';
 import GrandWarden from '@/public/Grand_Warden.webp';
 import RoyalChampion from '@/public/Royal_Champion.webp';
 export default async function Hero() {
-  async function fetchHeroData() {
-    const data = await fetch(`https://api.clashofclans.com/v1/players/%23L2RLLQGVO`, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${process.env.CLASH_API_KEY}`
-      },
-      next: { revalidate: 3600 }
-    });
-    return data.json();
-  }
-  const json = await fetchHeroData();
-  // const data = await fetch('https://api.clashofclans.com/v1/players/%23L2RLLQGVO', {
-  //   method: 'GET',
-  //   headers: {
-  //     'Authorization': `Bearer ${process.env.CLASH_API_KEY}`
-  //   },
-  //   next: { revalidate: 3600 }
-  // });
-  // const json = await data.json();
+  const data = await fetch('https://api.clashofclans.com/v1/players/%23L2RLLQGVO', {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${process.env.CLASH_API_KEY}`
+    },
+    next: { revalidate: 3600 }
+  });
+  const json = await data.json();
+  const heroList = Array.isArray(json.heroes) ? json.heroes : [];
   interface Hero {
     name: string;
     level?: number;
@@ -52,7 +42,7 @@ export default async function Hero() {
     }
   };
   for (const hero of Object.values(heroes)) {
-    hero.level = await json.heroes.find((h: Hero) => h.name === hero.name)?.level || 0;
+    hero.level = heroList.find((h: Hero) => h.name === hero.name)?.level || 0;
   }
   return (
     <>
