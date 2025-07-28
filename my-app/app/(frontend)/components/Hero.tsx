@@ -9,7 +9,8 @@ export default async function Hero() {
     method: 'GET',
     headers: {
       'Authorization': `Bearer ${process.env.CLASH_API_KEY}`
-    }
+    },
+    next: { revalidate: 3600 }
   });
   const json = await data.json();
   interface Hero {
