@@ -1,7 +1,7 @@
 import Image from "next/image";
 import my_pic from "../../public/my_pic.png"
 import FunFact from "./components/FunFact";
-import Hero from "./components/Hero";
+// import Hero from "./components/Hero";
 
 export default function Home() {
   return (
