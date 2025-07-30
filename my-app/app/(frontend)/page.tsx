@@ -36,7 +36,7 @@ export default function Home() {
               and to add my cool projects all into one place.
           </p>
           <FunFact/>
-          <Hero/>
+          {/* <Hero/> */}
       </section>
   );
 }
