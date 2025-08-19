@@ -17,20 +17,9 @@
         font-family: 'Inter', sans-serif;
     }
 
-    /*nav a {
-        display: inline-block;
-        padding: .5em 5%;
-    }*/
-
     nav a:hover {
         color: var(--color-primary);
     }
-
-    /*nav{
-        text-align: center;
-        font-size: 1.1em;
-        border-bottom: 1px solid gray;
-    }*/
 
     h1 {
         text-align: center;
