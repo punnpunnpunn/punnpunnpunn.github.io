@@ -12,16 +12,7 @@
  * ---------------------------------------------------------------------------------
  */
 
-export declare const internalGroqTypeReferenceTo: unique symbol;
-
-// Source: sanity/extract.json
-export type SanityImageAssetReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-};
-
+// Source: schema.json
 export type Funfact = {
   _id: string;
   _type: "funfact";
@@ -30,7 +21,12 @@ export type Funfact = {
   _rev: string;
   fact?: string;
   image?: {
-    asset?: SanityImageAssetReference;
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -64,27 +60,18 @@ export type Project = {
   link?: string;
   description?: string;
   mainImage?: {
-    asset?: SanityImageAssetReference;
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
     _type: "image";
   };
-};
-
-export type AuthorReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "author";
-};
-
-export type CategoryReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "category";
 };
 
 export type Post = {
@@ -96,53 +83,67 @@ export type Post = {
   title?: string;
   slug?: Slug;
   description?: string;
-  author?: AuthorReference;
+  author?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "author";
+  };
   mainImage?: {
-    asset?: SanityImageAssetReference;
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
     _type: "image";
   };
-  categories?: Array<
-    {
-      _key: string;
-    } & CategoryReference
-  >;
+  categories?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
   publishedAt?: string;
   body?: BlockContent;
 };
 
-export type BlockContent = Array<
-  | {
-      children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: "span";
-        _key: string;
-      }>;
-      style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-      listItem?: "bullet";
-      markDefs?: Array<{
-        href?: string;
-        _type: "link";
-        _key: string;
-      }>;
-      level?: number;
-      _type: "block";
-      _key: string;
-    }
-  | {
-      asset?: SanityImageAssetReference;
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt?: string;
-      _type: "image";
-      _key: string;
-    }
->;
+export type BlockContent = Array<{
+  children?: Array<{
+    marks?: Array<string>;
+    text?: string;
+    _type: "span";
+    _key: string;
+  }>;
+  style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+  listItem?: "bullet";
+  markDefs?: Array<{
+    href?: string;
+    _type: "link";
+    _key: string;
+  }>;
+  level?: number;
+  _type: "block";
+  _key: string;
+} | {
+  asset?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+  };
+  media?: unknown;
+  hotspot?: SanityImageHotspot;
+  crop?: SanityImageCrop;
+  alt?: string;
+  _type: "image";
+  _key: string;
+}>;
 
 export type Author = {
   _id: string;
@@ -153,7 +154,12 @@ export type Author = {
   name?: string;
   slug?: Slug;
   image?: {
-    asset?: SanityImageAssetReference;
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -229,7 +235,6 @@ export type SanityImageMetadata = {
   palette?: SanityImagePalette;
   lqip?: string;
   blurHash?: string;
-  thumbHash?: string;
   hasAlpha?: boolean;
   isOpaque?: boolean;
 };
@@ -293,35 +298,20 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type AllSanitySchemaTypes =
-  | SanityImageAssetReference
-  | Funfact
-  | SanityImageCrop
-  | SanityImageHotspot
-  | Project
-  | AuthorReference
-  | CategoryReference
-  | Post
-  | BlockContent
-  | Author
-  | Slug
-  | Category
-  | SanityImagePaletteSwatch
-  | SanityImagePalette
-  | SanityImageDimensions
-  | SanityImageMetadata
-  | SanityFileAsset
-  | SanityAssetSourceData
-  | SanityImageAsset
-  | Geopoint;
-
-// Source: sanity/lib/queries.ts
+export type AllSanitySchemaTypes = Funfact | SanityImageCrop | SanityImageHotspot | Project | Post | BlockContent | Author | Slug | Category | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
+export declare const internalGroqTypeReferenceTo: unique symbol;
+// Source: ./sanity/lib/queries.ts
 // Variable: POSTS_QUERY
 // Query: *[_type == "post"] | order(publishedAt desc){  title,  mainImage,  "authorName": author->name,  slug,  _id,  description,  publishedAt}
-export type POSTS_QUERY_RESULT = Array<{
+export type POSTS_QUERYResult = Array<{
   title: string | null;
   mainImage: {
-    asset?: SanityImageAssetReference;
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -334,29 +324,35 @@ export type POSTS_QUERY_RESULT = Array<{
   description: string | null;
   publishedAt: string | null;
 }>;
-
-// Source: sanity/lib/queries.ts
 // Variable: POST_QUERY
 // Query: *[_type == "post" && slug.current == $slug][0]{  title, body, mainImage, author, publishedAt}
-export type POST_QUERY_RESULT = {
+export type POST_QUERYResult = {
   title: string | null;
   body: BlockContent | null;
   mainImage: {
-    asset?: SanityImageAssetReference;
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
     _type: "image";
   } | null;
-  author: AuthorReference | null;
+  author: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "author";
+  } | null;
   publishedAt: string | null;
 } | null;
-
-// Source: sanity/lib/queries.ts
 // Variable: PROJECTS_QUERY
 // Query: *[_type == "project"] | order(_createdAt desc)
-export type PROJECTS_QUERY_RESULT = Array<{
+export type PROJECTS_QUERYResult = Array<{
   _id: string;
   _type: "project";
   _createdAt: string;
@@ -366,7 +362,12 @@ export type PROJECTS_QUERY_RESULT = Array<{
   link?: string;
   description?: string;
   mainImage?: {
-    asset?: SanityImageAssetReference;
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -374,14 +375,17 @@ export type PROJECTS_QUERY_RESULT = Array<{
     _type: "image";
   };
 }>;
-
-// Source: sanity/lib/queries.ts
 // Variable: FUNFACT_QUERY
 // Query: *[_type == "funfact"] {fact, image}
-export type FUNFACT_QUERY_RESULT = Array<{
+export type FUNFACT_QUERYResult = Array<{
   fact: string | null;
   image: {
-    asset?: SanityImageAssetReference;
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -393,9 +397,9 @@ export type FUNFACT_QUERY_RESULT = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '*[_type == "post"] | order(publishedAt desc){\n  title,\n  mainImage,\n  "authorName": author->name,\n  slug,\n  _id,\n  description,\n  publishedAt\n}': POSTS_QUERY_RESULT;
-    '*[_type == "post" && slug.current == $slug][0]{\n  title, body, mainImage, author, publishedAt\n}': POST_QUERY_RESULT;
-    '*[_type == "project"] | order(_createdAt desc)': PROJECTS_QUERY_RESULT;
-    '*[_type == "funfact"] {fact, image}': FUNFACT_QUERY_RESULT;
+    "*[_type == \"post\"] | order(publishedAt desc){\n  title,\n  mainImage,\n  \"authorName\": author->name,\n  slug,\n  _id,\n  description,\n  publishedAt\n}": POSTS_QUERYResult;
+    "*[_type == \"post\" && slug.current == $slug][0]{\n  title, body, mainImage, author, publishedAt\n}": POST_QUERYResult;
+    "*[_type == \"project\"] | order(_createdAt desc)": PROJECTS_QUERYResult;
+    "*[_type == \"funfact\"] {fact, image}": FUNFACT_QUERYResult;
   }
 }
