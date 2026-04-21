@@ -5,11 +5,12 @@ import { useState } from "react";
 import Confetti from "./Confetti";
 
 const Navbar = () => {
-  const [rain, setRain] = useState<Array<{ id: number }>>([]);
+  const [rain, setRain] = useState<{ id: number } | null>(null);
 
   const handleLogoClick = () => {
     const newOrigin = { id: Date.now() };
-    setRain(prev => [...prev, newOrigin]);
+    setRain(newOrigin);
+    console.log(rain);
   };
 
   return (

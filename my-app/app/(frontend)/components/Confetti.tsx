@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 
 type ConfettiProps = {
-  rainID?: Array<{ id: number }> | null;
+  rainID?: { id: number } | null;
 };
 
 interface Particle {
@@ -22,13 +22,12 @@ const Confetti = ({ rainID }: ConfettiProps) => {
   const activeAnimationsRef = useRef<Map<number, { particles: Particle[], animationId: number, startTime: number }>>(new Map());
 
   useEffect(() => {
-    if (!rainID || rainID.length === 0 || !containerRef.current) return;
+    if (!rainID || !containerRef.current) return;
 
     const container = containerRef.current;
 
     // Only process the latest burst origin to avoid re-triggering old animations
-    const latestOrigin = rainID[rainID.length - 1];
-    if (!activeAnimationsRef.current.has(latestOrigin.id)) {
+    if (!activeAnimationsRef.current.has(rainID.id)) {
       const particles: Particle[] = [];
       const startTime = Date.now();
       const generationTime = 1500; // Stop creating new particles after 1.5 seconds
@@ -105,15 +104,15 @@ const Confetti = ({ rainID }: ConfettiProps) => {
         // Continue animation if there are still particles or generation time hasn't ended
         if (particles.length > 0 || elapsed < generationTime) {
           const animationId = requestAnimationFrame(animate);
-          activeAnimationsRef.current.set(latestOrigin.id, { particles, animationId, startTime });
+          activeAnimationsRef.current.set(rainID.id, { particles, animationId, startTime });
         } else {
           // Animation finished, clean up this specific animation
-          activeAnimationsRef.current.delete(latestOrigin.id);
+          activeAnimationsRef.current.delete(rainID.id);
         }
       };
 
       const animationId = requestAnimationFrame(animate);
-      activeAnimationsRef.current.set(latestOrigin.id, { particles, animationId, startTime });
+      activeAnimationsRef.current.set(rainID.id, { particles, animationId, startTime });
     }
 
     // Don't clean up in the effect cleanup - let animations finish naturally
@@ -152,6 +151,3 @@ const Confetti = ({ rainID }: ConfettiProps) => {
 };
 
 export default Confetti;
-
-
-
