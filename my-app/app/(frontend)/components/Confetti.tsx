@@ -56,9 +56,9 @@ const Confetti = ({ rainID }: ConfettiProps) => {
       };
 
       // Create initial batch of particles
-      for (let i = 0; i < 50; i++) {
-        createParticle();
-      }
+      // for (let i = 0; i < 50; i++) {
+      //   createParticle();
+      // }
 
       const animate = () => {
         const elapsed = Date.now() - startTime;
