@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 
 type ConfettiProps = {
-  burstOrigins?: Array<{ x: number; y: number; id: number }> | null;
+  rainID?: Array<{ id: number }> | null;
 };
 
 interface Particle {
@@ -17,17 +17,17 @@ interface Particle {
   element: HTMLDivElement;
 }
 
-const Confetti = ({ burstOrigins }: ConfettiProps) => {
+const Confetti = ({ rainID }: ConfettiProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const activeAnimationsRef = useRef<Map<number, { particles: Particle[], animationId: number, startTime: number }>>(new Map());
 
   useEffect(() => {
-    if (!burstOrigins || burstOrigins.length === 0 || !containerRef.current) return;
+    if (!rainID || rainID.length === 0 || !containerRef.current) return;
 
     const container = containerRef.current;
 
     // Only process the latest burst origin to avoid re-triggering old animations
-    const latestOrigin = burstOrigins[burstOrigins.length - 1];
+    const latestOrigin = rainID[rainID.length - 1];
     if (!activeAnimationsRef.current.has(latestOrigin.id)) {
       const particles: Particle[] = [];
       const startTime = Date.now();
@@ -120,7 +120,7 @@ const Confetti = ({ burstOrigins }: ConfettiProps) => {
     return () => {
       // Only clean up on component unmount
     };
-  }, [burstOrigins]);
+  }, [rainID]);
 
   // Separate effect for component unmount cleanup
   useEffect(() => {
