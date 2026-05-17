@@ -16,28 +16,44 @@ export default async function Blog() {
   }
   
   return (
-    <section>
+    <section className="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
         <h1>My Blog Posts</h1>
-        {posts.map((post) => (
-          <div className="max-w-xs w-full sm:max-w-2xl sm:flex m-auto my-[50px] h-auto shadow-lg sm:shadow-none rounded-lg" key={post._id}>
-            {post?.mainImage ? (
-              <div className="sm:float-left sm:w-[45%] m-2.5 float-none">
-              <Image
-                src={urlFor(post.mainImage).width(2000).auto("format").url()}
-                alt={post?.mainImage?.alt || ""}
-                width={2000}
-                height={1000}
-                className="w-full max-w-lg h-auto rounded-xl"
-              />
-              </div>
-            ) : null}
-            <div className="m-2.5 sm:float-left sm:w-[45%] h-auto float-none">
-              <Link className="font-bold text-3xl mb-3 underline" href={`/blog/${post?.slug?.current}`}>{post?.title}</Link>
-              <p className="text-lg text-justify mb-1">{post?.description}</p>
-              <p className="text-sm border-t">{convertDate(post?.publishedAt)}</p>
+        
+          <div className="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-10">
+              {posts.map((post) => (
+                <div className="rounded overflow-hidden shadow-lg" key={post._id}>
+
+                    <Link href={`/blog/${post?.slug?.current}`}></Link>
+                    <div className="relative">
+                      {post?.mainImage ? (
+                        <Link href={`/blog/${post?.slug?.current}`}>
+                            <Image
+                              src={urlFor(post.mainImage).width(2000).auto("format").url()}
+                              alt={post?.mainImage?.alt || ""}
+                              width={2000}
+                              height={1000}
+                              className="w-full max-w-lg h-auto rounded-xl"
+                            />
+                            <div
+                                className="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
+                            </div>
+                        </Link>
+                      ) : null}
+                    </div>
+                    <div className="px-6 py-4">
+
+                        <Link href={`/blog/${post?.slug?.current}`}
+                            className="font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out">{post?.title}</Link>
+                        <p className="text-sm">
+                            {post?.description}
+                        </p>
+                        <p className="text-sm border-t">{convertDate(post?.publishedAt)}</p>
+                    </div>
+                </div>
+              ))}
             </div>
-          </div>
-        ))}
+        </div>
         <SanityLive />
     </section>
   )
