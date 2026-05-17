@@ -23,8 +23,6 @@ export default async function Blog() {
             <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-10">
               {posts.map((post) => (
                 <div className="rounded overflow-hidden shadow-lg" key={post._id}>
-
-                    <Link href={`/blog/${post?.slug?.current}`}></Link>
                     <div className="relative">
                       {post?.mainImage ? (
                         <Link href={`/blog/${post?.slug?.current}`}>
