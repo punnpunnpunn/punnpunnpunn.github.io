@@ -1,11 +1,11 @@
 'use client'
 
 import { urlFor } from "@/sanity/lib/image"
-import { FUNFACT_QUERYResult } from "@/sanity/types"
+import { FUNFACT_QUERY_RESULT } from "@/sanity/types"
 import Image from "next/image"
 import { useState } from "react"
 
-const RandomFact = ({factList}: {factList: FUNFACT_QUERYResult}) => {
+const RandomFact = ({factList}: {factList: FUNFACT_QUERY_RESULT}) => {
     const [randomFact, setRandomFact] = useState(-1)
     function randomizeFact() {
         setRandomFact(-2)
