@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { SanityLive } from "@/sanity/lib/live";
 import { Metadata } from "next";
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata: Metadata = {
   title: "Punpun's Personal Website",
@@ -24,6 +25,7 @@ export default function RootLayout({
     <div /*"px-2.5 max-w-3xl mx-auto my-8"*/>
         {children}
         <SanityLive/>
+        <Analytics />
     </div>
     <Footer/>
     </>
