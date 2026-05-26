@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
+import { notFound } from 'next/navigation'
 
 const supabase = createClient(
   process.env.SUPABASE_URL!,
