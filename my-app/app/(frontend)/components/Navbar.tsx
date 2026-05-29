@@ -10,7 +10,6 @@ const Navbar = () => {
   const handleLogoClick = () => {
     const newOrigin = { id: Date.now() };
     setRain(newOrigin);
-    console.log(rain);
   };
 
   return (
