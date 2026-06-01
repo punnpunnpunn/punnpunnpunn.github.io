@@ -4,12 +4,18 @@ import { urlFor } from "@/sanity/lib/image"
 import { FUNFACT_QUERY_RESULT } from "@/sanity/types"
 import Image from "next/image"
 import { useState } from "react"
+import posthog from "posthog-js"
 
 const RandomFact = ({factList}: {factList: FUNFACT_QUERY_RESULT}) => {
     const [randomFact, setRandomFact] = useState(-1)
     function randomizeFact() {
         setRandomFact(-2)
-        setRandomFact(Math.floor(Math.random()*factList.length))
+        const index = Math.floor(Math.random()*factList.length)
+        setRandomFact(index)
+        posthog.capture("fun_fact_generated", {
+            fact_index: index,
+            total_facts: factList.length,
+        })
     }
 
     return (

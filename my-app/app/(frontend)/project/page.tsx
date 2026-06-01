@@ -2,7 +2,7 @@ import { sanityFetch } from "@/sanity/lib/live"
 import { PROJECTS_QUERY } from "@/sanity/lib/queries"
 import Image from "next/image"
 import { urlFor } from "@/sanity/lib/image"
-import Link from "next/link"
+import ProjectLink from "../components/ProjectLink"
 
 export default async function Home() {
   const {data: projects} = await sanityFetch({query: PROJECTS_QUERY})
@@ -24,7 +24,7 @@ export default async function Home() {
               </div>
             ) : null}
             <div className="m-2.5 sm:float-left sm:w-[45%] h-auto">
-              <Link className="font-bold text-3xl mb-3 underline" href={String(project?.link)} target="_blank">{project?.title}</Link>
+              <ProjectLink className="font-bold text-3xl mb-3 underline" href={String(project?.link)} title={project?.title ?? null} target="_blank">{project?.title}</ProjectLink>
               <p className="text-lg text-justify my-1 sm:border-b">{project?.description}</p>
             </div>
           </div>

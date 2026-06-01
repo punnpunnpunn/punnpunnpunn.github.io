@@ -2,7 +2,7 @@ import { urlFor } from "@/sanity/lib/image"
 import { sanityFetch, SanityLive } from "@/sanity/lib/live"
 import { POSTS_QUERY } from "@/sanity/lib/queries"
 import Image from "next/image"
-import Link from "next/link"
+import BlogPostLink from "../components/BlogPostLink"
 
 export default async function Blog() {
   const {data: posts} = await sanityFetch({ query: POSTS_QUERY })
@@ -25,7 +25,7 @@ export default async function Blog() {
                 <div className="rounded overflow-hidden shadow-lg" key={post._id}>
                     <div className="relative">
                       {post?.mainImage ? (
-                        <Link href={`/blog/${post?.slug?.current}`}>
+                        <BlogPostLink href={`/blog/${post?.slug?.current}`} slug={post?.slug?.current ?? ""} title={post?.title ?? null}>
                             <Image
                               src={urlFor(post.mainImage).width(2000).auto("format").url()}
                               alt={post?.mainImage?.alt || ""}
@@ -36,13 +36,13 @@ export default async function Blog() {
                             <div
                                 className="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
                             </div>
-                        </Link>
+                        </BlogPostLink>
                       ) : null}
                     </div>
                     <div className="px-6 py-4">
 
-                        <Link href={`/blog/${post?.slug?.current}`}
-                            className="font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out">{post?.title}</Link>
+                        <BlogPostLink href={`/blog/${post?.slug?.current}`} slug={post?.slug?.current ?? ""} title={post?.title ?? null}
+                            className="font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out">{post?.title}</BlogPostLink>
                         <p className="text-sm">
                             {post?.description}
                         </p>

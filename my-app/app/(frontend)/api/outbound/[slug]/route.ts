@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
-import { notFound } from 'next/navigation'
+import { getPostHogClient } from '@/lib/posthog-server'
 
 const supabase = createClient(
   process.env.SUPABASE_URL!,
@@ -42,6 +42,17 @@ export async function GET(
     ip,
     user_agent: userAgent,
     referer,
+  })
+
+  const posthog = getPostHogClient()
+  posthog.capture({
+    distinctId: ip,
+    event: 'outbound_link_clicked',
+    properties: {
+      link_name: slug,
+      destination,
+      referer,
+    },
   })
 
   return NextResponse.redirect(destination)

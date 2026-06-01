@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import Confetti from "./Confetti";
+import posthog from "posthog-js";
 
 const Navbar = () => {
   const [rain, setRain] = useState<{ id: number } | null>(null);
@@ -10,6 +11,7 @@ const Navbar = () => {
   const handleLogoClick = () => {
     const newOrigin = { id: Date.now() };
     setRain(newOrigin);
+    posthog.capture("confetti_triggered");
   };
 
   return (

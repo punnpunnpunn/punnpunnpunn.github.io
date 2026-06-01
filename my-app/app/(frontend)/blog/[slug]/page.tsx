@@ -4,20 +4,32 @@ import { PortableText } from "next-sanity";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
+import { getPostHogClient } from "@/lib/posthog-server";
 
 export default async function Page({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
+  const { slug } = await params;
   const { data: post } = await sanityFetch({
     query: POST_QUERY,
-    params: await params,
+    params: { slug },
   });
 
   if (!post) {
     notFound();
   }
+
+  const posthogClient = getPostHogClient();
+  posthogClient.capture({
+    distinctId: "anonymous",
+    event: "blog_post_viewed",
+    properties: {
+      slug,
+      title: post.title,
+    },
+  });
 
   const convertDate = (date: string | null) => {
     if (date){
