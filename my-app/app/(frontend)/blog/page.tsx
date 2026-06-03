@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { urlFor } from "@/sanity/lib/image"
 import { sanityFetch } from "@/sanity/lib/live"
 import { POSTS_QUERY } from "@/sanity/lib/queries"

@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { sanityFetch } from "@/sanity/lib/live";
 import { POST_QUERY } from "@/sanity/lib/queries";
 import { PortableText } from "next-sanity";
