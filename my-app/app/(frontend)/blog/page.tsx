@@ -1,5 +1,5 @@
 import { urlFor } from "@/sanity/lib/image"
-import { sanityFetch, SanityLive } from "@/sanity/lib/live"
+import { sanityFetch } from "@/sanity/lib/live"
 import { POSTS_QUERY } from "@/sanity/lib/queries"
 import Image from "next/image"
 import BlogPostLink from "../components/BlogPostLink"
@@ -52,7 +52,6 @@ export default async function Blog() {
               ))}
             </div>
         </div>
-        <SanityLive />
     </section>
   )
 }
