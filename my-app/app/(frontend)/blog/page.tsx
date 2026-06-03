@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 import { urlFor } from "@/sanity/lib/image"
 import { sanityFetch } from "@/sanity/lib/live"
